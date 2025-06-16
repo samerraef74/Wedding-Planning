@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../components/headTag.ejs') %>
+  </head>
+  <body class="login-page">
+    <div class="login-header box-shadow">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="brand-logo">
+          <a href="/">
+            <img src="/img/logo-black.png" alt="Logo" />
+          </a>
+        </div>
+        <div class="login-menu">
+          <ul>
+            <li><a href="/signIn">Sign in</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="register-page-wrap d-flex align-items-center flex-wrap justify-content-center" style="background-image: url('https://img.freepik.com/free-photo/groom-putting-ring-bride-s-finger_1157-338.jpg'); background-size: cover;">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="register-box bg-white box-shadow border-radius-10">
+            <div class="wizard-content">
+              <form id="registration-form" class="tab-wizard2 wizard-circle wizard" enctype="multipart/form-data">
+                <!-- Step 1 -->
+                <h5>Basic Account Credentials</h5>
+                <section>
+                  <div class="form-wrap max-width-600 mx-auto">
+                    <!-- Email -->
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">Email Address<span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="email" class="form-control" name="email" required />
+                      </div>
+                    </div>
+                    <!-- Username -->
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">Username<span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="username" required />
+                      </div>
+                    </div>
+                    <!-- Password -->
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">Password<span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="password" class="form-control" name="password" required />
+                      </div>
+                    </div>
+                    <!-- Confirm Password -->
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">Confirm Password<span class="text-danger">*</span></label>
+                      <div class="col-sm-8">
+                        <input type="password" class="form-control" name="confirmPassword" required />
+                      </div>
+                    </div>
+                    <!-- Profile Picture Upload -->
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">Profile Picture</label>
+                      <div class="col-sm-8">
+                        <input type="file" name="profilePicture" accept="image/*" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Step 2 -->
+                <h5>Personal Information</h5>
+                <section>
+                  <div class="form-wrap max-width-600 mx-auto">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">Full Name</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="fullName" required />
+                      </div>
+                    </div>
+                    <div class="form-group row align-items-center">
+                      <label class="col-sm-4 col-form-label">Gender</label>
+                      <div class="col-sm-8">
+                        <div class="custom-control custom-radio custom-control-inline pb-0">
+                          <input type="radio" id="male" name="gender" value="male" class="custom-control-input" required />
+                          <label class="custom-control-label" for="male">Male</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline pb-0">
+                          <input type="radio" id="female" name="gender" value="female" class="custom-control-input" required />
+                          <label class="custom-control-label" for="female">Female</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">Phone</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="phone" />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">City</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="city" />
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Step 3: Overview -->
+                <h5>Overview Information</h5>
+                <section>
+                  <div class="form-wrap max-width-600 mx-auto">
+                    <ul class="register-info">
+                      <li>
+                        <div class="row">
+                          <div class="col-sm-4 weight-600">Email Address</div>
+                          <div class="col-sm-8" id="overview-email">-</div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="row">
+                          <div class="col-sm-4 weight-600">Username</div>
+                          <div class="col-sm-8" id="overview-username">-</div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="row">
+                          <div class="col-sm-4 weight-600">Password</div>
+                          <div class="col-sm-8" id="overview-password">-</div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="row">
+                          <div class="col-sm-4 weight-600">Full Name</div>
+                          <div class="col-sm-8" id="overview-fullName">-</div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="row">
+                          <div class="col-sm-4 weight-600">Phone</div>
+                          <div class="col-sm-8" id="overview-phone">-</div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="row">
+                          <div class="col-sm-4 weight-600">City</div>
+                          <div class="col-sm-8" id="overview-location">-</div>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="custom-control custom-checkbox mt-4">
+                      <input type="checkbox" class="custom-control-input" id="customCheck1" required />
+                      <label class="custom-control-label" for="customCheck1">
+                        I have read and agreed to the terms of services and privacy policy
+                      </label>
+                    </div>
+                  </div>
+                </section>
+              </form> <!-- end of form -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/vendors/scripts/core.js"></script>
+    <script src="/vendors/scripts/script.min.js"></script>
+    <script src="/vendors/scripts/process.js"></script>
+    <script src="/vendors/scripts/layout-settings.js"></script>
+    <script src="/plugins/jquery-steps/jquery.steps.js"></script>
+    <script src="/vendors/scripts/steps-setting.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/validator@13.7.0/validator.min.js"></script>
+
+    <script type="module">
+      import showMsg from "/js/toastify.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("registration-form");
+
+        // Update overview on any input change
+        form.addEventListener("input", () => {
+          const data = new FormData(form);
+          document.getElementById("overview-email").textContent    = data.get("email") || "-";
+          document.getElementById("overview-username").textContent = data.get("username") || "-";
+          document.getElementById("overview-password").textContent = data.get("password") ? "••••••••" : "-";
+          document.getElementById("overview-fullName").textContent = data.get("fullName") || "-";
+          document.getElementById("overview-phone").textContent    = data.get("phone") || "-";
+          document.getElementById("overview-location").textContent = data.get("city") || "-";
+        });
+
+        // Handle finish button (multipart upload)
+        const finishLink = document.querySelector('a[href="#finish"]');
+        finishLink.addEventListener("click", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(form);
+          try {
+            const res = await fetch("/signup", { method: "POST", body: formData });
+            const json = await res.json();
+            if (json.errMsg) showMsg(json.errMsg, "red");
+            else {
+              showMsg("Account created!", "green");
+              setTimeout(() => location.assign("/signin"), 1500);
+            }
+          } catch (err) {
+            showMsg("Error: " + err.message, "red");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

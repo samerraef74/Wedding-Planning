@@ -5,21 +5,19 @@ export const signUp_get = async (req, res) => {
 };
 
 export const signUp_post = async (req, res) => {
-  let newUser;
   try {
-    const { email, username, password, fullName, gender, phone, city } =
-      req.body;
+    const { email, username, password, fullName, gender, phone, city } = req.body;
+
+    const profilePicture = req.file
+      ? `/uploads/users/${req.file.filename}`
+      : undefined;
 
     if (await userModel.findOne({ email }))
-      return res.status(409).json({ errMsg: "Email is Taken" });
-
+      return res.status(409).json({ errMsg: "Email is taken" });
     if (await userModel.findOne({ username }))
-      return res.status(409).json({ errMsg: "Username is Taken" });
+      return res.status(409).json({ errMsg: "Username is taken" });
 
-    if (await userModel.findOne({ phone }))
-      return res.status(409).json({ errMsg: "Phone number is Taken" });
-
-    newUser = new userModel({
+    const newUser = await userModel.create({
       email,
       username,
       password,
@@ -27,10 +25,11 @@ export const signUp_post = async (req, res) => {
       gender,
       phone,
       city,
-    }).save();
+      ...(profilePicture && { profilePicture })
+    });
 
+    res.status(201).json({ user: newUser });
   } catch (err) {
-    return res.status(409).json({ errMsg: err });
+    res.status(500).json({ errMsg: err.message });
   }
-  return res.status(201).json({ user: newUser });
 };
